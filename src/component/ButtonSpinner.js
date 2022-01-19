@@ -19,7 +19,7 @@ const ButtonSpinner = () => {
             setSubmitSpinner(!submitSpinner);
           }
         }}>
-        <Text style={styles.submitSpinnerText}>Log into your account</Text>
+        <Text style={styles.submitSpinnerText}>Submit</Text>
         {submitSpinner ? (
           <ActivityIndicator
             style={{marginLeft: 10}}
