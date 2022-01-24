@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import { Color } from '../utility/Theme';
 
@@ -19,11 +20,13 @@ const ButtonSpinner = () => {
             setSubmitSpinner(!submitSpinner);
           }
         }}>
-        <Text style={styles.submitSpinnerText}>Submit</Text>
+          <Image source={require('../../assets/google.png')}
+          style={{...styles.imageIconStyle}}/>
+        <Text style={styles.submitSpinnerText}>Continue with Google</Text>
         {submitSpinner ? (
           <ActivityIndicator
             style={{marginLeft: 10}}
-            color={Color.SECONDARY}
+            color={Color.BUTTON}
             size="small"
           />
         ) : null}
@@ -43,11 +46,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Color.BUTTON,
+    backgroundColor: Color.PRIMARY,
     paddingVertical: 10,
     paddingHorizontal: 24,
-    borderRadius: 4,
-    elevation: 2,
+    borderRadius: 10,
+    elevation: 15,
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
@@ -55,6 +58,16 @@ const styles = StyleSheet.create({
   submitSpinnerText: {
     fontSize: 20,
     fontWeight: '400',
-    color: '#fff',
+    color: '#0D0D0D',
+    marginRight: 15,
   },
+  imageIconStyle: {
+    padding: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+  },
+ 
 });

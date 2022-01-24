@@ -1,35 +1,39 @@
-import React, {Component} from 'react';
-import {Text, View, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from '../../utility/Dimension';
 import {Color, Font, Padding} from '../../utility/Theme';
-import {TextInput} from 'react-native-paper';
+// import {TextInput} from 'react-native-paper';
 import ButtonSpinner from '../../component/ButtonSpinner';
+import {AuthContext} from '../../navigation/AuthProvider';
 
-export class Login extends Component {
-  constructor(props) {
-    super();
-  }
+export const Login = ({navigation}) => {
+  const {login, googleLogin} = useContext(AuthContext);
 
-  render() {
-    return (
-      <View style={styles.screen}>
-        <View style={styles.imageView}>
-          <Image
-            source={require('../../../assets/design.png')}
-            style={styles.image}
-          />
-        </View>
-        <View style={styles.textTitle}>
-          <Text style={styles.text}>Welcome</Text>
-          <Text style={styles.bottomText}>
-            Use your credentials below and login
-          </Text>
-          <Text style={styles.bottomText}>to your account</Text>
-          <View style={styles.input}>
-            <TextInput
+  return (
+    <View style={styles.screen}>
+      <View style={styles.imageView}>
+        <Image
+          source={require('../../../assets/design.png')}
+          style={styles.image}
+        />
+      </View>
+      <View style={styles.textTitle}>
+        <Text style={styles.text}>Welcome</Text>
+        <Text style={styles.bottomText}>
+          Use your credentials below and login
+        </Text>
+        <Text style={styles.bottomText}>to your account</Text>
+        <View style={styles.input}>
+          {/* <TextInput
               label="Email"
               style={styles.textInput}
               selectionColor={Color.HEADING}
@@ -42,19 +46,23 @@ export class Login extends Component {
               style={styles.textInput}
               selectionColor={Color.HEADING}
               activeUnderlineColor={Color.HEADING}
-            />
-            <View style={styles.button}>
-              <ButtonSpinner/>
-              <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Signup')}>
-                <Text>Don't have an account? Sign Up here</Text>
-              </TouchableOpacity>
-            </View>
+            /> */}
+          <View style={styles.button}>
+            <TouchableOpacity onPress={ () => googleLogin()}>
+              {console.log(googleLogin())}
+              <ButtonSpinner />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('Signup')}>
+              <Text>Don't have an account? Sign Up here</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   screen: {
@@ -73,6 +81,7 @@ const styles = StyleSheet.create({
   textTitle: {
     alignItems: 'center',
     height: heightPercentageToDP('20%'),
+    padding: Padding.PRIMARY_PADDING,
   },
   bottomText: {
     fontSize: Font.PRIMARY,
@@ -86,7 +95,14 @@ const styles = StyleSheet.create({
     color: Color.HEADING,
   },
   button: {
+    alignItems: 'center',
+    paddingVertical: Padding.BUTTON_PADDING,
     padding: Padding.PRIMARY_PADDING,
+  },
+  googleButton: {
+    borderColor: Color.HEADING,
+    padding: Padding.PRIMARY_PADDING,
+    elevation: 20,
   },
 });
 export default Login;

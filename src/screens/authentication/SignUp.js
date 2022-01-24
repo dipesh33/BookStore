@@ -50,7 +50,6 @@ export class Login extends Component {
               activeUnderlineColor={Color.HEADING}
             />
             <View style={styles.button}>
-              <ButtonSpinner/>
               <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Login')}>
                 <Text>Already have an account? Login here</Text>
               </TouchableOpacity>

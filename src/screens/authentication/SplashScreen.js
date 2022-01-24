@@ -7,6 +7,8 @@ import {
 } from '../../utility/Dimension';
 import { Font } from '../../utility/Theme';
 
+LogBox.ignoreLogs([" Seems like you're using an old API with gesture components, check out new Gestures system!"]);
+
 export class SplashScreen extends Component {
   constructor(props) {
     super();

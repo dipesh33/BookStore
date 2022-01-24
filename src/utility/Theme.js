@@ -10,7 +10,7 @@ export const Color = {
     SECONDARY: '#F9F7E8',//theme
     EMPTY_FIELD_ICON: 'gold',
     AUTH_COLOR: '#cd853f',
-    ACTIVE_COLOR: 'blue',
+    ACTIVE_COLOR: '#242B2E',
     PLACE_HOLDER_COLOR: '#f2f2f2',//grey
     TRANSPARENT: 'rgba(0,0,0,0)',
     ERROR_TEXT: 'red',
